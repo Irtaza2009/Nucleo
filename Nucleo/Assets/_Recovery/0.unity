@@ -200,7 +200,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.07058824, g: 0.05882353, b: 0.09803922, a: 0}
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -352,7 +352,6 @@ GameObject:
   - component: {fileID: 929369538}
   - component: {fileID: 929369541}
   - component: {fileID: 929369540}
-  - component: {fileID: 929369542}
   m_Layer: 0
   m_Name: PlayerCore
   m_TagString: Player
@@ -482,19 +481,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &929369542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 929369537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ccd9fe24792c244e8a62ca7c74528ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  projectilePrefab: {fileID: 6937768412466028186, guid: 5102b5a1227a50e45a1b9f9903735eec, type: 3}
 --- !u!1 &1371950261
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,7 +512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   enemyPrefab: {fileID: 8902121797001288398, guid: d4895293efff3b442982b322652225b4, type: 3}
   minSpawnTime: 1
-  maxSpawnTime: 5
+  maxSpawnTime: 3
   spawnRadius: 10
 --- !u!4 &1371950263
 Transform:
@@ -537,7 +523,7 @@ Transform:
   m_GameObject: {fileID: 1371950261}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 2, z: 0}
+  m_LocalPosition: {x: 1, y: 0.28089, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

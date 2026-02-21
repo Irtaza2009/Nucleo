@@ -1,0 +1,45 @@
+using UnityEngine;
+
+public class RadiationShooter : MonoBehaviour
+{
+    public GameObject projectilePrefab;
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            Shoot(RadiationType.Alpha);
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            Shoot(RadiationType.Beta);
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+            Shoot(RadiationType.Gamma);
+    }
+
+    void Shoot(RadiationType type)
+    {
+        GameObject proj = Instantiate(projectilePrefab, transform.position, transform.rotation);
+        RadiationProjectile projectile = proj.GetComponent<RadiationProjectile>();
+
+        switch (type)
+        {
+            case RadiationType.Alpha:
+                projectile.speed = 3f;
+                projectile.damage = 15f;
+                projectile.range = 2f;
+                break;
+
+            case RadiationType.Beta:
+                projectile.speed = 6f;
+                projectile.damage = 8f;
+                projectile.range = 4f;
+                break;
+
+            case RadiationType.Gamma:
+                projectile.speed = 10f;
+                projectile.damage = 5f;
+                projectile.range = 10f;
+                break;
+        }
+    }
+}
