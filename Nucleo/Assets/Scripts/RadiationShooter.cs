@@ -18,6 +18,28 @@ public class RadiationShooter : MonoBehaviour
 
     void Shoot(RadiationType type)
     {
+
+        float cost = 0;
+
+        switch (type)
+        {
+            case RadiationType.Alpha:
+                cost = 10f;
+                break;
+            case RadiationType.Beta:
+                cost = 20f;
+                break;
+            case RadiationType.Gamma:
+                cost = 40f;
+                break;
+        }
+        
+        PlayerCore core = GetComponent<PlayerCore>();
+
+        if (core.CurrentEnergy < cost) return;
+
+        core.UseEnergy(cost);
+
         GameObject proj = Instantiate(projectilePrefab, transform.position, transform.rotation);
         RadiationProjectile projectile = proj.GetComponent<RadiationProjectile>();
 
