@@ -37,9 +37,11 @@ public class PlayerCore : MonoBehaviour
     {
         currentHealth -= damage;
 
+        FindObjectOfType<CameraShake>().Shake();
+
         if (currentHealth <= 0)
         {
-            Die();
+            //Die();
         }
     }
 
