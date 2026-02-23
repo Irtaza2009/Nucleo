@@ -28,7 +28,9 @@ public class RadiationProjectile : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            Destroy(collision.gameObject);
+            EnemyParticle enemy = collision.GetComponent<EnemyParticle>();
+            enemy.TakeDamage(damage, type);
+
             Destroy(gameObject);
         }
     }

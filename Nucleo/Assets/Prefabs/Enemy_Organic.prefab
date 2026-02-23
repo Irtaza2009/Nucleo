@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 687181319791234760}
   - component: {fileID: 7505348024734710356}
   m_Layer: 0
-  m_Name: EnemyParticle
+  m_Name: Enemy_Organic
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,5 +168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b8991f68d6f244c83381f234d0f0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  enemyType: 0
+  baseHealth: 20
   speed: 2
-  damage: 5

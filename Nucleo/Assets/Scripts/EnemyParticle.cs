@@ -1,14 +1,25 @@
 using UnityEngine;
 
+public enum EnemyType
+{
+    Organic,
+    Metallic,
+    Light
+}
+
 public class EnemyParticle : MonoBehaviour
 {
-    public float speed = 2f;
-    public float damage = 5f;
+    public EnemyType enemyType;
 
+    public float baseHealth = 20f;
+    public float speed = 2f;
+
+    private float currentHealth;
     private Transform target;
 
     void Start()
     {
+        currentHealth = baseHealth;
         target = GameObject.FindWithTag("Player").transform;
     }
 
@@ -20,12 +31,38 @@ public class EnemyParticle : MonoBehaviour
         transform.position += (Vector3)direction * speed * Time.deltaTime;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    public void TakeDamage(float damage, RadiationType radiationType)
     {
-        if (collision.CompareTag("Player"))
+        float multiplier = GetDamageMultiplier(radiationType);
+
+        currentHealth -= damage * multiplier;
+
+        if (currentHealth <= 0)
         {
-            collision.GetComponent<PlayerCore>().TakeDamage(damage);
             Destroy(gameObject);
         }
+    }
+
+    float GetDamageMultiplier(RadiationType radiationType)
+    {
+        switch (enemyType)
+        {
+            case EnemyType.Organic:
+                if (radiationType == RadiationType.Alpha) return 2f;
+                if (radiationType == RadiationType.Gamma) return 0.5f;
+                break;
+
+            case EnemyType.Metallic:
+                if (radiationType == RadiationType.Gamma) return 2f;
+                if (radiationType == RadiationType.Alpha) return 0.5f;
+                break;
+
+            case EnemyType.Light:
+                if (radiationType == RadiationType.Beta) return 2f;
+                if (radiationType == RadiationType.Alpha) return 0.5f;
+                break;
+        }
+
+        return 1f;
     }
 }

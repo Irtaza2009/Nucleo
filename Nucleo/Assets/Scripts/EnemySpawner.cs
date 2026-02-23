@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject[] enemyPrefabs;
     public float spawnRate = 2f;
     public float spawnRadius = 8f;
     public float enemySpeedMultiplier = 1f;
@@ -26,7 +26,10 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemy()
     {
         Vector2 spawnPosition = Random.insideUnitCircle.normalized * spawnRadius;
-        EnemyParticle enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity)
+
+        GameObject randomEnemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+
+        EnemyParticle enemy = Instantiate(randomEnemy, spawnPosition, Quaternion.identity)
             .GetComponent<EnemyParticle>();
 
         enemy.speed *= enemySpeedMultiplier;
