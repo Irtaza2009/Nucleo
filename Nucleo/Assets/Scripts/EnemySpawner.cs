@@ -4,9 +4,9 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    public float minSpawnTime = 1f;
-    public float maxSpawnTime = 3f;
+    public float spawnRate = 2f;
     public float spawnRadius = 8f;
+    public float enemySpeedMultiplier = 1f;
 
     void Start()
     {
@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
     {
         while (true)
         {
-            float randomWait = Random.Range(minSpawnTime, maxSpawnTime);
+            float randomWait = Random.Range(spawnRate * 0.8f, spawnRate * 1.2f);
             yield return new WaitForSeconds(randomWait);
             SpawnEnemy();
         }
@@ -26,6 +26,9 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemy()
     {
         Vector2 spawnPosition = Random.insideUnitCircle.normalized * spawnRadius;
-        Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        EnemyParticle enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity)
+            .GetComponent<EnemyParticle>();
+
+        enemy.speed *= enemySpeedMultiplier;
     }
 }
