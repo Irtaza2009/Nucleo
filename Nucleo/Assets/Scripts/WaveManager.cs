@@ -62,3 +62,10 @@ public class WaveManager : MonoBehaviour
             waveText.text = "Wave " + currentWave;
     }
 }
+
+// Todo:
+// - Add wave complete UI with timer until next wave
+// - Add boss waves every 5 waves with unique enemies and mechanics
+// - Add 3 cards to choose from between waves that provide
+//   buffs for the next wave (e.g. increased stability, health,
+//   max health)
