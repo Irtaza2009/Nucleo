@@ -1,8 +1,10 @@
 using UnityEngine;
+using TMPro;
 
 public class WaveManager : MonoBehaviour
 {
     public EnemySpawner spawner;
+    public TextMeshProUGUI waveText;
 
     public int currentWave = 1;
     public float waveDuration = 20f;
@@ -34,16 +36,29 @@ public class WaveManager : MonoBehaviour
         isWaveActive = true;
         timer = waveDuration;
 
-        spawner.spawnRate *= 0.95f; // spawn faster (slower scaling)
+        spawner.SetSpawning(true);
+        spawner.spawnRate *= 0.95f; 
         spawner.enemySpeedMultiplier += 0.1f;
 
+        UpdateWaveUI();
         Debug.Log("Wave " + currentWave);
     }
 
     void EndWave()
     {
         isWaveActive = false;
+        spawner.SetSpawning(false);
+        
+        if (waveText != null)
+            waveText.text = "Wave " + currentWave + " Complete!";
+
         timer = timeBetweenWaves;
         currentWave++;
+    }
+
+    void UpdateWaveUI()
+    {
+        if (waveText != null)
+            waveText.text = "Wave " + currentWave;
     }
 }
