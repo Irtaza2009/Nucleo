@@ -13,6 +13,7 @@ public class EnemyParticle : MonoBehaviour
 
     public float baseHealth = 20f;
     public float speed = 2f;
+    public float damage = 10f;
 
     private float currentHealth;
     private Transform target;
@@ -39,6 +40,19 @@ public class EnemyParticle : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            Destroy(gameObject);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            PlayerCore playerCore = collision.GetComponent<PlayerCore>();
+            if (playerCore != null)
+            {
+                playerCore.TakeDamage(damage);
+            }
             Destroy(gameObject);
         }
     }

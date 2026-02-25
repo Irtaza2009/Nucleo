@@ -14,10 +14,13 @@ public class PlayerCore : MonoBehaviour
 
     public float CurrentEnergy => currentEnergy;
 
+    private Color originalColor;
+
     void Start()
     {
         currentHealth = maxHealth;
         currentEnergy = maxEnergy;
+        originalColor = GetComponent<SpriteRenderer>().color;
         UpdateEnergyUI();
     }
 
@@ -36,6 +39,9 @@ public class PlayerCore : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+
+        GetComponent<SpriteRenderer>().color = Color.red;
+        Invoke(nameof(ResetColor), 0.1f);
 
         FindObjectOfType<CameraShake>().Shake();
 
@@ -62,5 +68,10 @@ public class PlayerCore : MonoBehaviour
     {
         if (energyText != null)
             energyText.text = "Energy: " + currentEnergy.ToString("F0") + " / " + maxEnergy.ToString("F0");
+    }
+
+    void ResetColor()
+    {
+        GetComponent<SpriteRenderer>().color = originalColor;
     }
 }
