@@ -32,6 +32,6 @@ public class EnemySpawner : MonoBehaviour
         EnemyParticle enemy = Instantiate(randomEnemy, spawnPosition, Quaternion.identity)
             .GetComponent<EnemyParticle>();
 
-        enemy.speed *= enemySpeedMultiplier;
+        enemy.speed *= enemySpeedMultiplier; 
     }
 }

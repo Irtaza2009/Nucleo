@@ -5512,7 +5512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   maxHealth: 100
   maxEnergy: 100
-  energyRegen: 10
+  energyRegen: 20
   energyText: {fileID: 257889449}
 --- !u!58 &929369541
 CircleCollider2D:

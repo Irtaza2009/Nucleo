@@ -24,13 +24,13 @@ public class RadiationShooter : MonoBehaviour
         switch (type)
         {
             case RadiationType.Alpha:
-                cost = 10f;
+                cost = 12f;
                 break;
             case RadiationType.Beta:
-                cost = 20f;
+                cost = 15f;
                 break;
             case RadiationType.Gamma:
-                cost = 40f;
+                cost = 18f;
                 break;
         }
         
@@ -47,19 +47,19 @@ public class RadiationShooter : MonoBehaviour
         {
             case RadiationType.Alpha:
                 projectile.speed = 3f;
-                projectile.damage = 15f;
+                projectile.damage = 18f;
                 projectile.range = 2f;
                 break;
 
             case RadiationType.Beta:
                 projectile.speed = 6f;
-                projectile.damage = 8f;
+                projectile.damage = 12f;
                 projectile.range = 4f;
                 break;
 
             case RadiationType.Gamma:
                 projectile.speed = 10f;
-                projectile.damage = 5f;
+                projectile.damage = 16f;
                 projectile.range = 10f;
                 break;
         }

@@ -34,8 +34,8 @@ public class WaveManager : MonoBehaviour
         isWaveActive = true;
         timer = waveDuration;
 
-        spawner.spawnRate *= 0.9f; // spawn faster
-        spawner.enemySpeedMultiplier += 0.2f;
+        spawner.spawnRate *= 0.95f; // spawn faster (slower scaling)
+        spawner.enemySpeedMultiplier += 0.1f;
 
         Debug.Log("Wave " + currentWave);
     }

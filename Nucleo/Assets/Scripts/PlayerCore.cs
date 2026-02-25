@@ -8,7 +8,7 @@ public class PlayerCore : MonoBehaviour
 
     [Header("Energy")]
     public float maxEnergy = 100f;
-    public float energyRegen = 10f;
+    public float energyRegen = 6f;
     private float currentEnergy;
     public TextMeshProUGUI energyText;
 

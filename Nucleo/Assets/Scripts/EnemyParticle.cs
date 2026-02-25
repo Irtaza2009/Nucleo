@@ -20,6 +20,20 @@ public class EnemyParticle : MonoBehaviour
 
     void Start()
     {
+        // Set health based on enemy type
+        switch (enemyType)
+        {
+            case EnemyType.Organic:
+                baseHealth = 25f;
+                break;
+            case EnemyType.Metallic:
+                baseHealth = 20f;
+                break;
+            case EnemyType.Light:
+                baseHealth = 15f;
+                break;
+        }
+
         currentHealth = baseHealth;
         target = GameObject.FindWithTag("Player").transform;
     }
