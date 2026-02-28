@@ -42,6 +42,7 @@ public class RadiationShooter : MonoBehaviour
 
         GameObject proj = Instantiate(projectilePrefab, transform.position, transform.rotation);
         RadiationProjectile projectile = proj.GetComponent<RadiationProjectile>();
+        projectile.type = type;
 
         switch (type)
         {
@@ -63,5 +64,7 @@ public class RadiationShooter : MonoBehaviour
                 projectile.range = 10f;
                 break;
         }
+
+        projectile.ApplyColor(type);
     }
 }
