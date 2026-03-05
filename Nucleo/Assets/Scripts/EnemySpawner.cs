@@ -26,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
         {
             if (isSpawning)
             {
-                float randomWait = Random.Range(spawnRate * 0.8f, spawnRate * 1.2f);
+                float randomWait = Random.Range(spawnRate * 0.8f, spawnRate * 12f);
                 yield return new WaitForSeconds(randomWait);
                 SpawnEnemy();
             }

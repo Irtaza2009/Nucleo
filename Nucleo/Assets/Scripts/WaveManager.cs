@@ -49,6 +49,10 @@ public class WaveManager : MonoBehaviour
         isWaveActive = false;
         spawner.SetSpawning(false);
         
+        // Award wave completion bonus
+        if (ScoreManager.Instance != null)
+            ScoreManager.Instance.AddWaveBonus(currentWave);
+        
         if (waveText != null)
             waveText.text = "Wave " + currentWave + " Complete!";
 

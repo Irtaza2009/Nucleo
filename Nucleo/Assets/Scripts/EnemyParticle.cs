@@ -54,6 +54,13 @@ public class EnemyParticle : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            // Award score based on enemy type and radiation effectiveness
+            if (ScoreManager.Instance != null)
+            {
+                int baseScore = GetBaseScore();
+                bool isWeakness = multiplier > 1f;
+                ScoreManager.Instance.AddScore(baseScore, isWeakness);
+            }
             Destroy(gameObject);
         }
     }
@@ -92,5 +99,20 @@ public class EnemyParticle : MonoBehaviour
         }
 
         return 1f;
+    }
+
+    int GetBaseScore()
+    {
+        switch (enemyType)
+        {
+            case EnemyType.Organic:
+                return 100; // Tankier, more points
+            case EnemyType.Metallic:
+                return 75;  // Balanced
+            case EnemyType.Light:
+                return 50;  // Fragile, fewer points
+            default:
+                return 50;
+        }
     }
 }
