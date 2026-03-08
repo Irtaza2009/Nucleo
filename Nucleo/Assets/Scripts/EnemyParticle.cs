@@ -35,7 +35,9 @@ public class EnemyParticle : MonoBehaviour
         }
 
         currentHealth = baseHealth;
-        target = GameObject.FindWithTag("Player").transform;
+        GameObject playerObject = GameObject.FindWithTag("Player");
+        if (playerObject != null)
+            target = playerObject.transform;
     }
 
     void Update()

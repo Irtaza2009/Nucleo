@@ -4,6 +4,7 @@ using TMPro;
 public class WaveManager : MonoBehaviour
 {
     public EnemySpawner spawner;
+    public UpgradeManager upgradeManager;
     public TextMeshProUGUI waveText;
 
     public int currentWave = 1;
@@ -12,6 +13,7 @@ public class WaveManager : MonoBehaviour
 
     private float timer;
     private bool isWaveActive = true;
+    private bool isChoosingUpgrade = false;
 
     void Start()
     {
@@ -20,14 +22,38 @@ public class WaveManager : MonoBehaviour
 
     void Update()
     {
-        timer -= Time.deltaTime;
+        if (isWaveActive)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                EndWave();
+            }
+            return;
+        }
 
+        if (isChoosingUpgrade)
+        {
+            if (upgradeManager == null || upgradeManager.upgradePanel == null || !upgradeManager.upgradePanel.activeSelf)
+            {
+                StartWave();
+                isChoosingUpgrade = false;
+            }
+            return;
+        }
+
+        timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            if (isWaveActive)
-                EndWave();
+            if (upgradeManager != null)
+            {
+                upgradeManager.ShowUpgrades();
+                isChoosingUpgrade = true;
+            }
             else
+            {
                 StartWave();
+            }
         }
     }
 

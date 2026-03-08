@@ -4,6 +4,14 @@ public class RadiationShooter : MonoBehaviour
 {
     public GameObject projectilePrefab;
 
+    public float alphaDamageMultiplier = 1f;
+    public float betaDamageMultiplier = 1f;
+    public float gammaDamageMultiplier = 1f;
+
+    public float alphaRangeMultiplier = 1f;
+    public float betaRangeMultiplier = 1f;
+    public float gammaRangeMultiplier = 1f;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -48,20 +56,20 @@ public class RadiationShooter : MonoBehaviour
         {
             case RadiationType.Alpha:
                 projectile.speed = 3f;
-                projectile.damage = 18f;
-                projectile.range = 2f;
+                projectile.damage = 18f * alphaDamageMultiplier;
+                projectile.range = 2f * alphaRangeMultiplier;
                 break;
 
             case RadiationType.Beta:
                 projectile.speed = 6f;
-                projectile.damage = 12f;
-                projectile.range = 4f;
+                projectile.damage = 12f * betaDamageMultiplier;
+                projectile.range = 4f * betaRangeMultiplier;
                 break;
 
             case RadiationType.Gamma:
                 projectile.speed = 10f;
-                projectile.damage = 16f;
-                projectile.range = 10f;
+                projectile.damage = 16f * gammaDamageMultiplier;
+                projectile.range = 10f * gammaRangeMultiplier;
                 break;
         }
 

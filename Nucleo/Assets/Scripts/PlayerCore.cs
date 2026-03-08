@@ -66,6 +66,20 @@ public class PlayerCore : MonoBehaviour
         UpdateEnergyUI();
     }
 
+    public void AddMaxEnergy(float amount)
+    {
+        maxEnergy += amount;
+        currentEnergy = Mathf.Clamp(currentEnergy + amount, 0, maxEnergy);
+        UpdateEnergyUI();
+    }
+
+    public void AddMaxHealth(float amount)
+    {
+        maxHealth += amount;
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        UpdateHealthUI();
+    }
+
     void UpdateEnergyUI()
     {
         if (energyText != null)
