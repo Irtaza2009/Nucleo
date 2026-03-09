@@ -12,6 +12,11 @@ public class UpgradeManager : MonoBehaviour
     public PlayerCore player;
     public RadiationShooter shooter;
 
+    [Header("Card Sprites")]
+    public Sprite commonCardSprite;
+    public Sprite rareCardSprite;
+    public Sprite legendaryCardSprite;
+
     public void ShowUpgrades()
     {
         if (upgradePanel == null || cards == null || cards.Length == 0 || allUpgrades == null || allUpgrades.Count == 0)
@@ -25,7 +30,7 @@ public class UpgradeManager : MonoBehaviour
 
         while (choices.Count < maxChoices)
         {
-            UpgradeData random = allUpgrades[Random.Range(0, allUpgrades.Count)];
+            UpgradeData random = GetWeightedRandomUpgrade();
 
             if (!choices.Contains(random))
                 choices.Add(random);
@@ -42,6 +47,72 @@ public class UpgradeManager : MonoBehaviour
             {
                 cards[i].gameObject.SetActive(false);
             }
+        }
+    }
+
+    UpgradeData GetWeightedRandomUpgrade()
+    {
+        // Filter upgrades by rarity
+        List<UpgradeData> commonUpgrades = new List<UpgradeData>();
+        List<UpgradeData> rareUpgrades = new List<UpgradeData>();
+        List<UpgradeData> legendaryUpgrades = new List<UpgradeData>();
+
+        foreach (UpgradeData upgrade in allUpgrades)
+        {
+            switch (upgrade.rarity)
+            {
+                case Rarity.Common:
+                    commonUpgrades.Add(upgrade);
+                    break;
+                case Rarity.Rare:
+                    rareUpgrades.Add(upgrade);
+                    break;
+                case Rarity.Legendary:
+                    legendaryUpgrades.Add(upgrade);
+                    break;
+            }
+        }
+
+        // Generate random number for weighted selection
+        float randomValue = Random.Range(0f, 100f);
+
+        // 70% chance for common
+        if (randomValue < 70f && commonUpgrades.Count > 0)
+        {
+            return commonUpgrades[Random.Range(0, commonUpgrades.Count)];
+        }
+        // 25% chance for rare (70-95)
+        else if (randomValue < 95f && rareUpgrades.Count > 0)
+        {
+            return rareUpgrades[Random.Range(0, rareUpgrades.Count)];
+        }
+        // 5% chance for legendary (95-100)
+        else if (legendaryUpgrades.Count > 0)
+        {
+            return legendaryUpgrades[Random.Range(0, legendaryUpgrades.Count)];
+        }
+
+        // Fallback if no upgrades in selected rarity
+        if (commonUpgrades.Count > 0)
+            return commonUpgrades[Random.Range(0, commonUpgrades.Count)];
+        if (rareUpgrades.Count > 0)
+            return rareUpgrades[Random.Range(0, rareUpgrades.Count)];
+        
+        return allUpgrades[Random.Range(0, allUpgrades.Count)];
+    }
+
+    public Sprite GetSpriteForRarity(Rarity rarity)
+    {
+        switch (rarity)
+        {
+            case Rarity.Common:
+                return commonCardSprite;
+            case Rarity.Rare:
+                return rareCardSprite;
+            case Rarity.Legendary:
+                return legendaryCardSprite;
+            default:
+                return commonCardSprite;
         }
     }
 

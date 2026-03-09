@@ -8,6 +8,8 @@ public class EnemySpawner : MonoBehaviour
     public float spawnRadius = 8f;
     public float enemySpeedMultiplier = 1f;
 
+    public float randomness = 0.2f;
+
     private bool isSpawning = true;
 
     void Start()
@@ -26,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
         {
             if (isSpawning)
             {
-                float randomWait = Random.Range(spawnRate * 0.8f, spawnRate * 1.2f);
+                float randomWait = Random.Range(spawnRate * Mathf.Clamp(1 - randomness, 0, 1), spawnRate * (1 + randomness));
                 yield return new WaitForSeconds(randomWait);
                 if (!isSpawning)
                     continue;

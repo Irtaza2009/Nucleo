@@ -11,5 +11,7 @@ public enum UpgradeType
     EnergyMax,
     EnergyRegen,
 
-    CoreHealth
+    CoreHealth,
+
+    RandomnessReducer
 }

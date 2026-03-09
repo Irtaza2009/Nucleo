@@ -9,4 +9,13 @@ public class UpgradeData : ScriptableObject
     public UpgradeType upgradeType;
 
     public float value;
+
+    public Rarity rarity;
+}
+
+public enum Rarity
+{
+    Common,
+    Rare,
+    Legendary
 }
