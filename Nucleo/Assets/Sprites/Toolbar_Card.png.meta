@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 129bb97a88dcdc74ab285da6bd3ee37e
+guid: 2a8a701c690cece42837dc24149be613
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4052786442845601613
-    second: Upgrade_Card_Var-2_0
+      213: -3606180431139951588
+    second: Toolbar_Card_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20
+  spritePixelsToUnits: 12
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -152,35 +152,35 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Upgrade_Card_Var-2_0
+      name: Toolbar_Card_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 20
-        height: 28
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 8}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d4fb4541cc36e3830800000000000000
-      internalID: 4052786442845601613
+      spriteID: c1c20f5110644fdc0800000000000000
+      internalID: -3606180431139951588
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Upgrade_Card_Var-2_1
+      name: Toolbar_Card_1
       rect:
         serializedVersion: 2
-        x: 20
+        x: 12
         y: 0
-        width: 20
-        height: 28
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,20 +189,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26f5cc0755db209439ef2bb7c3aff0ff
-      internalID: -986647241
+      spriteID: a772a980b402a7a42b51ee3607e3e1d0
+      internalID: -1453133861
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Upgrade_Card_Var-2_2
+      name: Toolbar_Card_2
       rect:
         serializedVersion: 2
-        x: 40
+        x: 24
         y: 0
-        width: 20
-        height: 28
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,8 +211,162 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 653454313e3539e4985d7dea3f47b3c7
-      internalID: 1141260372
+      spriteID: 990baa8e6c68b1a448678d12fbfe922f
+      internalID: 1324484472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Toolbar_Card_3
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 0
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c130febbc9e9254bb7cd0187c015ae1
+      internalID: -1333246794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Toolbar_Card_4
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aafe853b5205d0c4b81033443d8191f3
+      internalID: 1330562115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Toolbar_Card_5
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 0
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca9207b9fff21d0429d001317cac3a1f
+      internalID: 524389814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Toolbar_Card_6
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32073a34627f498458cec7087f0b6215
+      internalID: 1700383295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Toolbar_Card_7
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 0
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cca38eb0fb7bad044940a8a6baf7ed37
+      internalID: 836890460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Toolbar_Card_8
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ef917f83e6467c4b89cf3d1357f214a
+      internalID: -723702801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Toolbar_Card_9
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 0
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f282a4884f593b941acb0f72a4cb4345
+      internalID: -2050360376
       vertices: []
       indices: 
       edges: []
@@ -221,7 +375,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 295a28d28993e8143ba582e865954bda
+    spriteID: 4b3ec51fd483d594e9ec1d0ebc4777c9
     internalID: 0
     vertices: []
     indices: 
@@ -231,11 +385,18 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":20.0,"y":28.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":12.0,"y":12.0},"gridSpriteOffset":{"x":0.0,"y":4.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Upgrade_Card_Var-2_0: 4052786442845601613
-      Upgrade_Card_Var-2_1: -986647241
-      Upgrade_Card_Var-2_2: 1141260372
+      Toolbar_Card_0: -3606180431139951588
+      Toolbar_Card_1: -1453133861
+      Toolbar_Card_2: 1324484472
+      Toolbar_Card_3: -1333246794
+      Toolbar_Card_4: 1330562115
+      Toolbar_Card_5: 524389814
+      Toolbar_Card_6: 1700383295
+      Toolbar_Card_7: 836890460
+      Toolbar_Card_8: -723702801
+      Toolbar_Card_9: -2050360376
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
