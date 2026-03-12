@@ -76,7 +76,13 @@ public class PlayerCore : MonoBehaviour
     public void AddMaxHealth(float amount)
     {
         maxHealth += amount;
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        UpdateHealthUI();
+    }
+
+    public void Heal(float amount)
+    {
+        currentHealth += amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthUI();
     }
 

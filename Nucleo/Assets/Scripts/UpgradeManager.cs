@@ -17,10 +17,21 @@ public class UpgradeManager : MonoBehaviour
     public Sprite rareCardSprite;
     public Sprite legendaryCardSprite;
 
+    [Header("Pity System")]
+    public float rarePityPerWave = 5f;
+    public float legendaryPityPerWave = 2f;
+
+    private float rarePityBonus = 0f;
+    private float legendaryPityBonus = 0f;
+
     public void ShowUpgrades()
     {
         if (upgradePanel == null || cards == null || cards.Length == 0 || allUpgrades == null || allUpgrades.Count == 0)
             return;
+
+        // Increase pity before generating this wave's cards
+        rarePityBonus += rarePityPerWave;
+        legendaryPityBonus += legendaryPityPerWave;
 
         upgradePanel.SetActive(true);
         Time.timeScale = 0f;
@@ -35,6 +46,12 @@ public class UpgradeManager : MonoBehaviour
             if (!choices.Contains(random))
                 choices.Add(random);
         }
+
+        // Reset pity counters if rare/legendary appeared as options
+        bool rareAppeared = choices.Exists(c => c.rarity == Rarity.Rare);
+        bool legendaryAppeared = choices.Exists(c => c.rarity == Rarity.Legendary);
+        if (rareAppeared) rarePityBonus = 0f;
+        if (legendaryAppeared) legendaryPityBonus = 0f;
 
         for (int i = 0; i < cards.Length; i++)
         {
@@ -76,17 +93,19 @@ public class UpgradeManager : MonoBehaviour
         // Generate random number for weighted selection
         float randomValue = Random.Range(0f, 100f);
 
-        // 70% chance for common
-        if (randomValue < 70f && commonUpgrades.Count > 0)
+        // Base: 70% common, 25% rare, 5% legendary — adjusted by pity (capped)
+        float rareThreshold = Mathf.Min(25f + rarePityBonus, 60f);
+        float legendaryThreshold = Mathf.Min(5f + legendaryPityBonus, 30f);
+        float commonThreshold = Mathf.Max(100f - rareThreshold - legendaryThreshold, 10f);
+
+        if (randomValue < commonThreshold && commonUpgrades.Count > 0)
         {
             return commonUpgrades[Random.Range(0, commonUpgrades.Count)];
         }
-        // 25% chance for rare (70-95)
-        else if (randomValue < 95f && rareUpgrades.Count > 0)
+        else if (randomValue < commonThreshold + rareThreshold && rareUpgrades.Count > 0)
         {
             return rareUpgrades[Random.Range(0, rareUpgrades.Count)];
         }
-        // 5% chance for legendary (95-100)
         else if (legendaryUpgrades.Count > 0)
         {
             return legendaryUpgrades[Random.Range(0, legendaryUpgrades.Count)];
@@ -146,8 +165,11 @@ public class UpgradeManager : MonoBehaviour
             case UpgradeType.EnergyRegen:
                 player.energyRegen += upgrade.value;
                 break;
-            case UpgradeType.CoreHealth:
+            case UpgradeType.MaxHealth:
                 player.AddMaxHealth(upgrade.value);
+                break;
+            case UpgradeType.Health:
+                player.Heal(upgrade.value);
                 break;
         }
 
