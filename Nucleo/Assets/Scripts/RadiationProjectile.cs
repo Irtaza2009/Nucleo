@@ -6,17 +6,29 @@ public class RadiationProjectile : MonoBehaviour
     public float damage;
     public float range;
     public RadiationType type;
-    private Color alphaColor = new Color(1f, 0.45f, 0.2f);
+    public float destroyAnimationLeadTime = 0.1f;
+    public float destroyAnimationDuration = 0.5f;
+    public float destroyAnimationSpeedMultiplier = 1f;
+    // private Color alphaColor = new Color(1f, 0.45f, 0.2f);
+    private Color alphaColor = new Color(1f, 1f, 1f); // white
     private Color betaColor = new Color(0.2f, 0.6f, 1f);
     private Color gammaColor = new Color(0.9f, 0.9f, 0.2f);
 
     private Vector3 startPosition;
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
+    private bool hasStartedDestroyAnimation;
 
     void Start()
     {
         startPosition = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+
+        // Keep destroy animation from playing on spawn.
+        if (animator != null)
+            animator.enabled = false;
+
         ApplyColor(type);
     }
 
@@ -24,7 +36,16 @@ public class RadiationProjectile : MonoBehaviour
     {
         transform.Translate(Vector2.up * speed * Time.deltaTime);
 
-        if (Vector3.Distance(startPosition, transform.position) > range)
+        float distanceTravelled = Vector3.Distance(startPosition, transform.position);
+        float remainingDistance = range - distanceTravelled;
+        float triggerDistance = Mathf.Max(0.01f, speed) * destroyAnimationLeadTime;
+
+        if (!hasStartedDestroyAnimation && remainingDistance <= triggerDistance)
+        {
+            StartRangeDestroyAnimation();
+        }
+
+        if (distanceTravelled >= range)
         {
             Destroy(gameObject);
         }
@@ -38,6 +59,19 @@ public class RadiationProjectile : MonoBehaviour
             enemy.TakeDamage(damage, type);
 
             Destroy(gameObject);
+        }
+    }
+
+    void StartRangeDestroyAnimation()
+    {
+        if (hasStartedDestroyAnimation)
+            return;
+
+        hasStartedDestroyAnimation = true;
+        if (animator != null)
+        {
+            animator.enabled = true;
+            animator.speed = Mathf.Max(0.01f, destroyAnimationSpeedMultiplier);
         }
     }
 

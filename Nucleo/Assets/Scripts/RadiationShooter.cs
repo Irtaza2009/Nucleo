@@ -69,7 +69,7 @@ public class RadiationShooter : MonoBehaviour
             case RadiationType.Gamma:
                 projectile.speed = 10f;
                 projectile.damage = 16f * gammaDamageMultiplier;
-                projectile.range = 10f * gammaRangeMultiplier;
+                projectile.range = 8f * gammaRangeMultiplier;
                 break;
         }
 
