@@ -58,18 +58,21 @@ public class RadiationShooter : MonoBehaviour
                 projectile.speed = 3f;
                 projectile.damage = 18f * alphaDamageMultiplier;
                 projectile.range = 2f * alphaRangeMultiplier;
+                if (AudioManager.Instance != null) AudioManager.Instance.PlayAlphaShoot();
                 break;
 
             case RadiationType.Beta:
                 projectile.speed = 6f;
                 projectile.damage = 12f * betaDamageMultiplier;
                 projectile.range = 4f * betaRangeMultiplier;
+                if (AudioManager.Instance != null) AudioManager.Instance.PlayBetaShoot();
                 break;
 
             case RadiationType.Gamma:
                 projectile.speed = 10f;
                 projectile.damage = 16f * gammaDamageMultiplier;
                 projectile.range = 8f * gammaRangeMultiplier;
+                if (AudioManager.Instance != null) AudioManager.Instance.PlayGammaShoot();
                 break;
         }
 

@@ -63,6 +63,10 @@ public class EnemyParticle : MonoBehaviour
                 bool isWeakness = multiplier > 1f;
                 ScoreManager.Instance.AddScore(baseScore, isWeakness);
             }
+
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlayEnemyKill();
+
             Destroy(gameObject);
         }
     }

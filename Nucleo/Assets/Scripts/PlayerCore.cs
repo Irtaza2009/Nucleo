@@ -42,6 +42,9 @@ public class PlayerCore : MonoBehaviour
         currentHealth -= damage;
         UpdateHealthUI();
 
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayHealthLoss();
+
         GetComponent<SpriteRenderer>().color = Color.red;
         Invoke(nameof(ResetColor), 0.1f);
 

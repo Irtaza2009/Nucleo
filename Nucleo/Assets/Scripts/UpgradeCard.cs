@@ -32,6 +32,9 @@ public class UpgradeCard : MonoBehaviour
 
     public void SelectUpgrade()
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayCardSelect();
+
         if (upgradeManager != null)
         {
             upgradeManager.ApplyUpgrade(upgrade);
