@@ -176,6 +176,8 @@ MonoBehaviour:
   destroyAnimationLeadTime: 0.4
   destroyAnimationDuration: 0.5
   destroyAnimationSpeedMultiplier: 1
+  projectileTypeParameter: ProjectileType
+  gammaProjectileSprite: {fileID: 5514349000509429753, guid: 239c4064b6a25134c9cc39e1a57380bf, type: 3}
 --- !u!95 &2826770517154005687
 Animator:
   serializedVersion: 7

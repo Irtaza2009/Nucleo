@@ -9,10 +9,13 @@ public class RadiationProjectile : MonoBehaviour
     public float destroyAnimationLeadTime = 0.1f;
     public float destroyAnimationDuration = 0.5f;
     public float destroyAnimationSpeedMultiplier = 1f;
+    public string projectileTypeParameter = "ProjectileType";
+    public Sprite gammaProjectileSprite;
     // private Color alphaColor = new Color(1f, 0.45f, 0.2f);
     private Color alphaColor = new Color(1f, 1f, 1f); // white
     private Color betaColor = new Color(0.2f, 0.6f, 1f);
-    private Color gammaColor = new Color(0.9f, 0.9f, 0.2f);
+    // private Color gammaColor = new Color(0.9f, 0.9f, 0.2f);
+    private Color gammaColor = new Color(1f, 1f, 1f); // white
 
     private Vector3 startPosition;
     private SpriteRenderer spriteRenderer;
@@ -30,6 +33,7 @@ public class RadiationProjectile : MonoBehaviour
             animator.enabled = false;
 
         ApplyColor(type);
+        ApplyProjectileVisuals();
     }
 
     void Update()
@@ -71,8 +75,26 @@ public class RadiationProjectile : MonoBehaviour
         if (animator != null)
         {
             animator.enabled = true;
+            ApplyAnimatorTypeParameter();
             animator.speed = Mathf.Max(0.01f, destroyAnimationSpeedMultiplier);
         }
+    }
+
+    void ApplyProjectileVisuals()
+    {
+        // Optional per-type sprite override.
+        if (type == RadiationType.Gamma && gammaProjectileSprite != null && spriteRenderer != null)
+            spriteRenderer.sprite = gammaProjectileSprite;
+
+        ApplyAnimatorTypeParameter();
+    }
+
+    void ApplyAnimatorTypeParameter()
+    {
+        if (animator == null || string.IsNullOrEmpty(projectileTypeParameter))
+            return;
+
+        animator.SetInteger(projectileTypeParameter, (int)type);
     }
 
     public void ApplyColor(RadiationType radiationType)
