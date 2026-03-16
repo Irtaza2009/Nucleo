@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class PlayerCore : MonoBehaviour
@@ -52,7 +54,7 @@ public class PlayerCore : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            //Die();
+            Die();
         }
     }
 
@@ -60,6 +62,18 @@ public class PlayerCore : MonoBehaviour
     {
         Debug.Log("Core Destroyed!");
         Time.timeScale = 0f;
+
+        if (ScoreManager.Instance != null)
+            ScoreManager.Instance.SaveScoreAndHighScore();
+
+        StartCoroutine(LoadGameOver());
+    }
+
+    IEnumerator LoadGameOver()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("GameOver");
     }
 
     public void UseEnergy(float amount)

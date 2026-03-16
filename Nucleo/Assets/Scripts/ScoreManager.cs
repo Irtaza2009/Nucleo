@@ -78,4 +78,14 @@ public class ScoreManager : MonoBehaviour
     {
         return currentScore;
     }
+
+    public void SaveScoreAndHighScore()
+    {
+        int highScore = PlayerPrefs.GetInt("HighScore", 0);
+        if (currentScore > highScore)
+            PlayerPrefs.SetInt("HighScore", currentScore);
+
+        PlayerPrefs.SetInt("LastScore", currentScore);
+        PlayerPrefs.Save();
+    }
 }

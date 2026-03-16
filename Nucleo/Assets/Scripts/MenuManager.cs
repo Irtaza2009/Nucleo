@@ -26,4 +26,20 @@ public class MenuManager : MonoBehaviour
 
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
+
+    public void RestartButton()
+    {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayButtonPress();
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+    }
+
+    public void MainMenuButton()
+    {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayButtonPress();
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
 }
